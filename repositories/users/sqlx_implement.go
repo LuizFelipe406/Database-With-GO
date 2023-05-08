@@ -7,16 +7,16 @@ import (
 	"github.com/jmoiron/sqlx"
 )
 
-type userDbSqlx struct {
+type userSqlxRepo struct {
 	writer *sqlx.DB
 	reader *sqlx.DB
 }
 
-func NewSqlx(writer *sqlx.DB, reader *sqlx.DB) UserRepositoryInterface {
-	return &userDbSqlx{writer, reader}
+func NewSqlxRepo(writer, reader *sqlx.DB) UserRepositoryInterface {
+	return &userSqlxRepo{writer, reader}
 }
 
-func (u *userDbSqlx) GetAll(ctx context.Context) ([]entities.User, error) {
+func (u *userSqlxRepo) GetAll(ctx context.Context) ([]entities.User, error) {
 	var users []entities.User
 
 	err := u.reader.SelectContext(ctx, &users, `

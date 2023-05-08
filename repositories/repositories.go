@@ -16,6 +16,6 @@ type Container struct {
 
 func New(options Options) *Container {
 	return &Container{
-		User: users.NewSqlx(options.WriterSqlx, options.ReaderSqlx),
+		User: users.NewSqlxRepo(options.WriterSqlx, options.ReaderSqlx),
 	}
 }
