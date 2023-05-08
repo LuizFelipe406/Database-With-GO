@@ -8,4 +8,6 @@ import (
 
 type UserRepositoryInterface interface {
 	GetAll(ctx context.Context) ([]entities.User, error)
+
+	Create(ctx context.Context, newUser entities.User) error
 }
